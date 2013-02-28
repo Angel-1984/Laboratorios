@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @material.nombre %>
+</p>
+
+<p>
+  <b>Disponible:</b>
+  <%= @material.disponible %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @material.descripcion %>
+</p>
+
+<p>
+  <b>Codigo:</b>
+  <%= @material.codigo %>
+</p>
+
+<p>
+  <b>Laboratorio:</b>
+  <%= @material.laboratorio.nombre %>
+</p>
+
+<p>
+  <b>Nuevo:</b>
+  <%= @material.nuevo %>
+</p>
+
+<p>
+  <b>Usado:</b>
+  <%= @material.usado %>
+</p>
+
+<p>
+  <b>Danado:</b>
+  <%= @material.danado %>
+</p>
+
+<p>
+  <b>Dano:</b>
+  <%= @material.dano %>
+</p>
+
+
+<%= link_to 'Edit', edit_material_path(@material) %> |
+<%= link_to 'Back', materiales_path %>

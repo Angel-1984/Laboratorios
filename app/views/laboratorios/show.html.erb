@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @laboratorio.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @laboratorio.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_laboratorio_path(@laboratorio) %> |
+<%= link_to 'Back', laboratorios_path %>

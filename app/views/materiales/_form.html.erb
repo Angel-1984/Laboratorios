@@ -1,0 +1,53 @@
+<%= form_for(@material) do |f| %>
+  <% if @material.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@material.errors.count, "error") %> prohibited this material from being saved:</h2>
+
+      <ul>
+      <% @material.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :disponible %><br />
+    <%= f.check_box :disponible %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= f.label :laboratorio_id %><br />
+    <%= f.select :laboratorio_id, Laboratorio.all.collect {|l| [l.nombre, l.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :nuevo %><br />
+    <%= f.check_box :nuevo %>
+  </div>
+  <div class="field">
+    <%= f.label :usado %><br />
+    <%= f.check_box :usado %>
+  </div>
+  <div class="field">
+    <%= f.label :danado %><br />
+    <%= f.check_box :danado %>
+  </div>
+  <div class="field">
+    <%= f.label :dano %><br />
+    <%= f.text_area :dano %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

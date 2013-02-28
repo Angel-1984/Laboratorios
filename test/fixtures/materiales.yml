@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  disponible: false
+  descripcion: MyText
+  codigo: MyString
+  laboratorio_id: 1
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyText
+
+two:
+  nombre: MyString
+  disponible: false
+  descripcion: MyText
+  codigo: MyString
+  laboratorio_id: 1
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyText

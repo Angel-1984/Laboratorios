@@ -1,0 +1,39 @@
+<h1>Listing materiales</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Disponible</th>
+    <th>Descripcion</th>
+    <th>Codigo</th>
+    <th>Laboratorio</th>
+    <th>Nuevo</th>
+    <th>Usado</th>
+    <th>Danado</th>
+    <th>Dano</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @materiales.each do |material| %>
+  <tr>
+    <td><%= material.nombre %></td>
+    <td><%= material.disponible %></td>
+    <td><%= material.descripcion %></td>
+    <td><%= material.codigo %></td>
+    <td><%= material.laboratorio.nombre %></td>
+    <td><%= material.nuevo %></td>
+    <td><%= material.usado %></td>
+    <td><%= material.danado %></td>
+    <td><%= material.dano %></td>
+    <td><%= link_to 'Show', material %></td>
+    <td><%= link_to 'Edit', edit_material_path(material) %></td>
+    <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Material', new_material_path %>
