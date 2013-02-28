@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  prestamo_id: 1
+  fecha_entrega: 2013-02-27 21:02:46
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyString
+  observaciones: MyString
+
+two:
+  prestamo_id: 1
+  fecha_entrega: 2013-02-27 21:02:46
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyString
+  observaciones: MyString

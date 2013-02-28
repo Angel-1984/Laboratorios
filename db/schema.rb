@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219042958) do
+ActiveRecord::Schema.define(:version => 20130228040246) do
+
+  create_table "devoluciones", :force => true do |t|
+    t.integer  "prestamo_id"
+    t.datetime "fecha_entrega"
+    t.boolean  "nuevo"
+    t.boolean  "usado"
+    t.boolean  "danado"
+    t.string   "dano"
+    t.string   "observaciones"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "laboratorios", :force => true do |t|
     t.string   "nombre"
@@ -30,6 +42,20 @@ ActiveRecord::Schema.define(:version => 20130219042958) do
     t.boolean  "usado"
     t.boolean  "danado"
     t.text     "dano"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "prestamos", :force => true do |t|
+    t.integer  "material_id"
+    t.string   "num_control"
+    t.string   "observaciones"
+    t.datetime "fecha_prestamo"
+    t.boolean  "nuevo"
+    t.boolean  "usado"
+    t.boolean  "danado"
+    t.string   "dano"
+    t.integer  "laboratorio_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

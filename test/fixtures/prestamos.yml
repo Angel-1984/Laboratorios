@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  material_id: 1
+  num_control: MyString
+  observaciones: MyString
+  fecha_prestamo: 2013-02-27 20:45:28
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyString
+  laboratorio_id: 1
+
+two:
+  material_id: 1
+  num_control: MyString
+  observaciones: MyString
+  fecha_prestamo: 2013-02-27 20:45:28
+  nuevo: false
+  usado: false
+  danado: false
+  dano: MyString
+  laboratorio_id: 1

@@ -2,7 +2,7 @@ class LaboratoriosController < ApplicationController
   # GET /laboratorios
   # GET /laboratorios.json
   def index
-    @laboratorios = Laboratorio.alll
+    @laboratorios = Laboratorio.all
 
     respond_to do |format|
       format.html # index.html.erb

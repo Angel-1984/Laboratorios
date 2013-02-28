@@ -1,0 +1,21 @@
+<% content_for :title, "Inicio" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+	<ul>
+		<li><%= link_to "Usuarios", '#' %></li>
+		<li><%= link_to "Materiales", materiales_path %></li>
+		<li><%= link_to "Laboratorios", laboratorios_path %></li>
+		<li><%= link_to "Prestamos", prestamos_path %></li>
+		<li><%= link_to "Devoluciones", devoluciones_path %></li>
+				<li><%= link_to "Reportes", '#' %></li>
+
+	</ul>
+<% end %>
+
+<% content_for :navigation do %>
+
+<% end %>
