@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>Laboratorios - <%= yield :title %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application.css", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,24 +11,28 @@
   <div id="page">
   	<div id="head">
   	  <div id="logo">
+  	  	<%= link_to "Pagina Principal", root_path %>
   	  </div>
   	  <div id="user">
+  	  	user
   	  </div>	
   	</div>
   	<div id="content">
   	  <div id="breadcrumb">
+  	  	breadcrumb
   	  	<%= yield :breadcrumb %>
   	  </div>
   	  <div id="main_content">
   	    <%= yield :main_content %>
   	  </div>
   	  <div id="navigation">
+  	  	navigation
   	  	<%= yield :navigation %>
   	  </div>
   	</div>
-	<div id="footer">
-	
-	</div>
+	  <div id="footer">
+	    footer
+	  </div>
   </div>
 
 </body>

@@ -1,6 +1,15 @@
+<%= content_for :title, "Materiales" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
 <h1>Listing materiales</h1>
 
-<table>
+<table id="tabla_materiales" class="display">
+ <thead> 
   <tr>
     <th>Nombre</th>
     <th>Disponible</th>
@@ -11,11 +20,12 @@
     <th>Usado</th>
     <th>Danado</th>
     <th>Dano</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="accion"></th>
+    <th class="accion"></th>
+    <th class="accion"></th>
   </tr>
-
+ </thead>
+<tbody>
 <% @materiales.each do |material| %>
   <tr>
     <td><%= material.nombre %></td>
@@ -27,13 +37,16 @@
     <td><%= material.usado %></td>
     <td><%= material.danado %></td>
     <td><%= material.dano %></td>
-    <td><%= link_to 'Show', material %></td>
-    <td><%= link_to 'Edit', edit_material_path(material) %></td>
-    <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="accion"><%= link_to 'Show', material %></td>
+    <td class="accion"><%= link_to 'Edit', edit_material_path(material) %></td>
+    <td class="accion"><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
 
 <%= link_to 'New Material', new_material_path %>
+
+<% end %>

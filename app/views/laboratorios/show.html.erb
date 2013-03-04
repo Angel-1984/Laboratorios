@@ -1,3 +1,10 @@
+<%= content_for :title, @laboratorio.nombre %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -13,3 +20,4 @@
 
 <%= link_to 'Edit', edit_laboratorio_path(@laboratorio) %> |
 <%= link_to 'Back', laboratorios_path %>
+<% end %>

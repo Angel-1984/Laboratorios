@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -20,8 +21,12 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
 
+  gem 'jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+
+end
+gem 'will_paginate'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

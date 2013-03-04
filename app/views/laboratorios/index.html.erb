@@ -1,21 +1,28 @@
+<%= content_for :title, "Laboratorios" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
 <h1>Listing laboratorios</h1>
 
-<table>
+<table class="index">
   <tr>
     <th>Nombre</th>
     <th>Descripcion</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="accion"></th>
+    <th class="accion"></th>
+    <th class="accion"></th>
   </tr>
 
 <% @laboratorios.each do |laboratorio| %>
   <tr>
     <td><%= laboratorio.nombre %></td>
     <td><%= laboratorio.descripcion %></td>
-    <td><%= link_to 'Show', laboratorio %></td>
-    <td><%= link_to 'Edit', edit_laboratorio_path(laboratorio) %></td>
-    <td><%= link_to 'Destroy', laboratorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="accion"><%= link_to 'Show', laboratorio %></td>
+    <td class="accion"><%= link_to 'Edit', edit_laboratorio_path(laboratorio) %></td>
+    <td class="accion"><%= link_to 'Destroy', laboratorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
@@ -23,3 +30,4 @@
 <br />
 
 <%= link_to 'New Laboratorio', new_laboratorio_path %>
+<% end %>

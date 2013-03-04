@@ -1,6 +1,14 @@
+<%= content_for :title, "Editar" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
 <h1>Editing laboratorio</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @laboratorio %> |
 <%= link_to 'Back', laboratorios_path %>
+<% end %>

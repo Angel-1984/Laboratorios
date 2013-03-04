@@ -1,3 +1,10 @@
+<%= content_for :title, @material.nombre %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -48,3 +55,4 @@
 
 <%= link_to 'Edit', edit_material_path(@material) %> |
 <%= link_to 'Back', materiales_path %>
+<% end %>

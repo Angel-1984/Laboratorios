@@ -9,5 +9,72 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require jquery.ui.slider
+ *= require dataTables/src/demo_table_jui
  *= require_tree .
  */
+
+html, body {
+	height: 100%;
+	margin: 0;
+	width: 100%;
+}
+
+body {
+	font-size: 16px;
+}
+
+#page {
+	width: 1000px;
+	margin: auto;
+	border: 1px solid black;
+}
+#head {
+	border: 1px solid black;
+	height: 60px;
+	padding: 10px;
+}
+#logo {
+	border: 1px solid blue;
+	float:left;
+	width: 100px;
+	height: 50px;
+	padding: 5px;
+}
+#user {
+	border: 1px solid green;
+	float:right;
+	width: 100px;
+	height: 50px;
+	padding: 5px;
+}
+#breadcrumb {
+	border: 1px solid yellow;
+}
+#content {
+	clear: both;
+	overflow:inherit;
+	border: 1px solid gray;
+	padding: 10px;
+}
+#main_content {
+	padding: 5px;
+	border: 0px solid red;
+}
+#navigation {
+	float:right;
+	border: 1px solid orange;
+}
+#footer {
+	border: 1px solid purple;
+}
+table {
+	border-spacing: 0;
+	border-collapse:collapse;
+}
+table td{
+	border: 1px solid #CCCCCC;
+	padding: 3px;
+}
