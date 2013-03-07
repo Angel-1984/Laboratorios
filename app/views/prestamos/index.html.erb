@@ -6,7 +6,7 @@
 
 <% content_for :main_content do %>
 
-<h1>Materiales</h1>
+<h1>Prestamos</h1>
 
 <table id="tabla_materiales_prestamo" class="display">
  <thead>
@@ -19,16 +19,13 @@
     <th>Nuevo</th>
     <th>Usado</th>
     <th>Danado</th>
-    <th>Dano</th>
-    <th class="accion"></th>
-    <th class="accion"></th>
-    <th class="accion"></th>
+    <th></th>
   </tr>
  </thead>
 <tbody>
 <% @materiales.each do |material| %>
   <tr>
-    <td><%= material.nombre %></td>
+    <td><%= link_to material.nombre, material %></td>
     <td><%= material.disponible %></td>
     <td><%= material.descripcion %></td>
     <td><%= material.codigo %></td>
@@ -36,10 +33,7 @@
     <td><%= material.nuevo %></td>
     <td><%= material.usado %></td>
     <td><%= material.danado %></td>
-    <td><%= material.dano %></td>
-    <td class="accion"><%= link_to 'Show', material %></td>
-    <td class="accion"><%= link_to 'Edit', edit_material_path(material) %></td>
-    <td class="accion"><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "Prestar", "/prestar/#{material.id}" if material.disponible %></td>
   </tr>
 <% end %>
 </tbody>

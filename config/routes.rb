@@ -6,7 +6,10 @@ Laboratorios::Application.routes.draw do
   resources :prestamos
   
   resources :devoluciones
-  
+
+  match 'prestar/:id' => 'prestamos#prestar'
+  match 'devolucion' => 'devoluciones#devolucion'
+  match 'devolver/:id' => 'devoluciones#devolver'
   #resources :main, :only => [:index]
 
   # The priority is based upon order of creation:

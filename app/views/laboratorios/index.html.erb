@@ -7,7 +7,8 @@
 <% content_for :main_content do %>
 <h1>Listing laboratorios</h1>
 
-<table class="index">
+<table id="tabla_laboratorios" class="index">
+  <thead>
   <tr>
     <th>Nombre</th>
     <th>Descripcion</th>
@@ -15,7 +16,8 @@
     <th class="accion"></th>
     <th class="accion"></th>
   </tr>
-
+</thead>
+<tbody>
 <% @laboratorios.each do |laboratorio| %>
   <tr>
     <td><%= laboratorio.nombre %></td>
@@ -25,6 +27,7 @@
     <td class="accion"><%= link_to 'Destroy', laboratorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

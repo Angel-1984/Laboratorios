@@ -1,0 +1,15 @@
+<%= content_for :title, "Devoluciones" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
+  <%= form_tag("/devolucion") do  %>
+    Numero de control: <%= text_field_tag "num_control"  %>
+     <%= submit_tag("Buscar") %>
+
+  <% end %>
+
+<% end   %>

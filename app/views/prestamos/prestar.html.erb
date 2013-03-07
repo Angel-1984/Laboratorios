@@ -1,0 +1,54 @@
+<%= content_for :title, "Prestar" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
+  <h1>Prestar</h1>
+
+  <%= form_for(@prestamo) do |f| %>
+    <% if @prestamo.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@prestamo.errors.count, "error") %> prohibited this prestamo from being saved:</h2>
+
+        <ul>
+        <% @prestamo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h3>Material: <%= @material.nombre %></h3>
+    <%= f.hidden_field :material_id, :value => @material.id %>
+    <div class="field">
+      <%= f.label :num_control %><br />
+      <%= f.text_field :num_control %>
+    </div>
+    <div class="field">
+      <%= f.label :observaciones %><br />
+      <%= f.text_area :observaciones, :rows => 5 %>
+    </div>
+    <%= f.hidden_field :fecha_prestamo, :value => DateTime.now %>
+    Estado: <%= revisar_estado(@material) %><br />
+    <% if @estado == "Danado" %>
+      Daño: <%= @material.dano %><br />
+    <% end %>
+    <%= f.hidden_field :nuevo, :value => @material.nuevo %>
+    <%= f.hidden_field :usado, :value => @material.usado %>
+    <%= f.hidden_field :danado, :value => @material.danado %>
+    <%= f.hidden_field :dano, :value => @material.dano %>
+    <br />
+    <div class="field">
+      <%= f.label :laboratorio_id %><br />
+      <%= f.select :laboratorio_id, Laboratorio.all.collect {|l| [l.nombre, l.id]}, :include_blank => true %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+
+<% end %>

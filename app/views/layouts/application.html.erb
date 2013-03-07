@@ -23,6 +23,9 @@
   	  	<%= yield :breadcrumb %>
   	  </div>
   	  <div id="main_content">
+            <% flash.each do |name,msg| %>
+              <p id="<%= name %>"><%= msg %></p>
+            <% end %>
   	    <%= yield :main_content %>
   	  </div>
   	  <div id="navigation">

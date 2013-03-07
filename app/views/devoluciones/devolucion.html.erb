@@ -1,0 +1,36 @@
+<%= content_for :title, "Prestamos pendientes" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
+<% unless @prestamos.empty?  %>
+<table id="prestamos_usuario" class="display">
+  <thead>
+    <tr>
+      <th>Material</th>
+      <th>Observaciones</th>
+      <th>Fecha de prestamo</th>
+      <th>Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for prestamo in @prestamos  %>
+    <tr>
+      <td><%= prestamo.material.nombre %></td>
+      <td><%= prestamo.observaciones %></td>
+      <td><%= prestamo.fecha_prestamo  %></td>
+      <td><%= revisar_estado(prestamo) %></td>
+      <td><%= link_to "Devolver", "/devolver/#{prestamo.id}" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  Este usuario no tiene prestamos.
+<% end %>
+
+<% end %>
