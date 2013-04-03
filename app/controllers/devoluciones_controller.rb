@@ -16,6 +16,16 @@ class DevolucionesController < ApplicationController
   def create
     @devolucion = Devolucion.new(params[:devolucion])
     @devolucion.fecha_entrega = DateTime.now
+    @devolucion.dano = ""
+    @devolucion.prestamo_id = params[:prestamo_id]
+    if params[:estado] == "nuevo"
+      @devolucion.nuevo = true
+    elsif params[:estado] == "usado"
+      @devolucion.usado = true
+    else
+      @devolucion.danado = true
+      @devolucion.dano = params[:devolucion][:dano]
+    end
     prestamo = Prestamo.find_by_id(params[:prestamo_id])
     material = prestamo.material
     material.nuevo = @devolucion.nuevo

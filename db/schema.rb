@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403032205) do
+ActiveRecord::Schema.define(:version => 20130403164539) do
 
   create_table "devoluciones", :force => true do |t|
     t.integer  "prestamo_id"
     t.datetime "fecha_entrega"
-    t.boolean  "nuevo"
-    t.boolean  "usado"
-    t.boolean  "danado"
+    t.boolean  "nuevo",         :default => false
+    t.boolean  "usado",         :default => false
+    t.boolean  "danado",        :default => false
     t.string   "dano"
     t.string   "observaciones"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "laboratorios", :force => true do |t|
@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(:version => 20130403032205) do
     t.text     "descripcion"
     t.string   "codigo"
     t.integer  "laboratorio_id"
-    t.boolean  "nuevo"
-    t.boolean  "usado"
-    t.boolean  "danado"
+    t.boolean  "nuevo",          :default => false
+    t.boolean  "usado",          :default => false
+    t.boolean  "danado",         :default => false
     t.text     "dano"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "prestamos", :force => true do |t|
@@ -51,14 +51,13 @@ ActiveRecord::Schema.define(:version => 20130403032205) do
     t.string   "num_control"
     t.string   "observaciones"
     t.datetime "fecha_prestamo"
-    t.boolean  "nuevo"
-    t.boolean  "usado"
-    t.boolean  "danado"
+    t.boolean  "nuevo",          :default => false
+    t.boolean  "usado",          :default => false
+    t.boolean  "danado",         :default => false
     t.string   "dano"
     t.integer  "laboratorio_id"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.boolean  "devuelto",       :default => false
   end
-
 end

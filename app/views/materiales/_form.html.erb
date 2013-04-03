@@ -31,17 +31,18 @@
     <%= f.label :laboratorio_id %><br />
     <%= f.select :laboratorio_id, Laboratorio.all.collect {|l| [l.nombre, l.id]} %>
   </div>
+  <% if !@material.nuevo or !@material.danado then usado = true else usado = false end %>
   <div class="field">
     <%= f.label :nuevo %><br />
-    <%= f.check_box :nuevo %>
+    <%= radio_button_tag :estado, :nuevo, @material.nuevo %>
   </div>
   <div class="field">
     <%= f.label :usado %><br />
-    <%= f.check_box :usado %>
+    <%= radio_button_tag :estado, :usado, usado %>
   </div>
   <div class="field">
     <%= f.label :danado %><br />
-    <%= f.check_box :danado %>
+    <%= radio_button_tag :estado, :danado, @material.danado %>
   </div>
   <div class="field">
     <%= f.label :dano %><br />

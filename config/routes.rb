@@ -11,6 +11,8 @@ Laboratorios::Application.routes.draw do
   match 'devolucion' => 'devoluciones#devolucion'
   match 'estado_devolucion/:id' => 'devoluciones#estado_devolucion'
   match 'devolver/:id' => 'devoluciones#devolver'
+
+  match 'historial_material/:id' => 'materiales#historial_material'
   #resources :main, :only => [:index]
 
   # The priority is based upon order of creation:

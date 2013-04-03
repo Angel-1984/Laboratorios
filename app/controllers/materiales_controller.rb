@@ -41,6 +41,15 @@ class MaterialesController < ApplicationController
   # POST /materiales.json
   def create
     @material = Material.new(params[:material])
+    @material.dano = ""
+    if params[:estado] == "nuevo"
+      @material.nuevo = true
+    elsif params[:estado] == "usado"
+      @material.usado = true
+    else
+      @material.danado = true
+      @material.dano = params[:material][:dano]
+    end
 
     respond_to do |format|
       if @material.save
@@ -79,5 +88,10 @@ class MaterialesController < ApplicationController
       format.html { redirect_to materiales_url }
       format.json { head :no_content }
     end
+  end
+
+  def historial_material
+    @material = Material.find_by_id(params[:id])
+    @prestamos = @material.prestamos
   end
 end

@@ -28,7 +28,7 @@
 <tbody>
 <% @materiales.each do |material| %>
   <tr>
-    <td><%= material.nombre %></td>
+    <td><%= link_to material.nombre, material %></td>
     <td><%= material.disponible %></td>
     <td><%= material.descripcion %></td>
     <td><%= material.codigo %></td>
@@ -37,7 +37,7 @@
     <td><%= material.usado %></td>
     <td><%= material.danado %></td>
     <td><%= material.dano %></td>
-    <td class="accion"><%= link_to 'Show', material %></td>
+    <td class="accion"><%= link_to 'Historial', "historial_material/#{material.id}" %></td>
     <td class="accion"><%= link_to 'Edit', edit_material_path(material) %></td>
     <td class="accion"><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

@@ -3,5 +3,5 @@ class Prestamo < ActiveRecord::Base
   
   belongs_to :material
   belongs_to :laboratorio
-  
+  has_many :devoluciones
 end

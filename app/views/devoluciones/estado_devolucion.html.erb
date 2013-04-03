@@ -31,15 +31,15 @@
     <h3>Estado Devolución:</h3>
     <div class="field">
       <%= f.label :nuevo %><br />
-      <%= f.check_box :nuevo, :checked => @prestamo.nuevo %>
+      <%= radio_button_tag :estado, :nuevo, @prestamo.nuevo %>
     </div>
     <div class="field">
       <%= f.label :usado %><br />
-      <%= f.check_box :usado, :checked => @prestamo.usado %>
+      <%= radio_button_tag :estado, :usado, @prestamo.usado %>
     </div>
     <div class="field">
       <%= f.label :danado %><br />
-      <%= f.check_box :danado, :checked => @prestamo.danado %>
+      <%= radio_button_tag :estado, :danado, @prestamo.danado %>
     </div>
     <div class="field">
       <%= f.label :dano %><br />

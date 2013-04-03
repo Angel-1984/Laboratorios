@@ -1,0 +1,50 @@
+<%= content_for :title, "Nuevo material" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
+<h1>Historial Material</h1>
+<% if !@prestamos.empty? %>
+  Material: <%= @material.nombre %><br /><br />
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Num Control</th>
+        <th>Observaciones</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for prestamo in @prestamos %>
+        <% devolucion = Devolucion.find(:first, :conditions => ['prestamo_id = ?', prestamo.id]) %>
+        <tr>
+          <td>Prestamo</td>
+          <td><%= prestamo.num_control %></td>
+          <td><%= prestamo.observaciones %></td>
+          <td><%= prestamo.fecha_prestamo.strftime("%-d %b %Y %H:%M") %></td>
+          <td><%= revisar_estado(prestamo) %></td>
+        </tr>
+        <% if devolucion %>
+          <tr>
+            <td>Devolucion</td>
+            <td><%= prestamo.num_control %></td>
+            <td><%= devolucion.observaciones %></td>
+            <td><%= devolucion.fecha_entrega.strftime("%-d %b %Y %H:%M") %></td>
+            <td><%= revisar_estado(devolucion) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  Este material no tiene historial de prestamos<br />
+<% end %>
+<br />
+<%= link_to 'Back', materiales_path %>
+
+<% end %>

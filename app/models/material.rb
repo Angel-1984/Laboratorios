@@ -2,6 +2,7 @@ class Material < ActiveRecord::Base
   attr_accessible :codigo, :danado, :dano, :descripcion, :disponible, :laboratorio_id, :nombre, :nuevo, :usado
   
   belongs_to :laboratorio
+  has_many :prestamos
 
   validates_presence_of :laboratorio_id, :message => "no puede estar en blanco."
   validates_presence_of :codigo, :message => "no puede estar en blanco."
