@@ -1,0 +1,57 @@
+<%= content_for :title, "Estado Devolución" %>
+
+<% content_for :breadcrumb do %>
+
+<% end %>
+
+<% content_for :main_content do %>
+
+  <h1>Devolver</h1>
+
+  <%= form_for(@devolucion) do |f| %>
+    <% if @devolucion.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@devolucion.errors.count, "error") %> prohibited this devolucion from being saved:</h2>
+
+        <ul>
+        <% @devolucion.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h3>Material: <%= @prestamo.material.nombre %></h3>
+    Observaciones: <%= @prestamo.observaciones %><br />
+    <%= hidden_field_tag :prestamo_id, @prestamo.id %>
+    Estado de Prestamo: <%= estado = revisar_estado(@prestamo) %><br />
+    <% if estado == "Danado" %>
+      Daño: <%= @prestamo.dano %><br />
+    <% end %>
+    <h3>Estado Devolución:</h3>
+    <div class="field">
+      <%= f.label :nuevo %><br />
+      <%= f.check_box :nuevo, :checked => @prestamo.nuevo %>
+    </div>
+    <div class="field">
+      <%= f.label :usado %><br />
+      <%= f.check_box :usado, :checked => @prestamo.usado %>
+    </div>
+    <div class="field">
+      <%= f.label :danado %><br />
+      <%= f.check_box :danado, :checked => @prestamo.danado %>
+    </div>
+    <div class="field">
+      <%= f.label :dano %><br />
+      <%= f.text_area :dano, :rows => 5, :value => @prestamo.dano %>
+    </div>
+    <div class="field">
+      <%= f.label :observaciones %><br />
+      <%= f.text_area :observaciones, :rows => 5 %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+<% end %>

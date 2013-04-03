@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228040246) do
+ActiveRecord::Schema.define(:version => 20130403032205) do
 
   create_table "devoluciones", :force => true do |t|
     t.integer  "prestamo_id"
@@ -56,8 +56,9 @@ ActiveRecord::Schema.define(:version => 20130228040246) do
     t.boolean  "danado"
     t.string   "dano"
     t.integer  "laboratorio_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "devuelto",       :default => false
   end
 
 end

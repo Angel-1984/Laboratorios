@@ -9,6 +9,7 @@ Laboratorios::Application.routes.draw do
 
   match 'prestar/:id' => 'prestamos#prestar'
   match 'devolucion' => 'devoluciones#devolucion'
+  match 'estado_devolucion/:id' => 'devoluciones#estado_devolucion'
   match 'devolver/:id' => 'devoluciones#devolver'
   #resources :main, :only => [:index]
 
