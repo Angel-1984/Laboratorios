@@ -4,14 +4,26 @@ class PrestamosController < ApplicationController
   end
 
   def prestar
-    @material = Material.find_by_id(params[:id])
-    if @material.disponible
-      @prestamo = Prestamo.new
+    
+  end
+
+  def agregar_carrito
+    @material_cart = Material.find_by_id(params[:id])
+    if !@material_cart.disponible
+      flash.now[:error] = "El material no esta disponible."
+      #@prestamo = Prestamo.new
     else
       respond_to do |format|
-        flash[:error] = "El material no esta disponible."
-        format.html { redirect_to prestamos_url }
+        format.js { render :layout => false }
+        #format.html { redirect_to prestamos_url }
       end
+    end
+  end
+
+  def devolver_carrito
+    @material_cart = Material.find_by_id(params[:id])
+    respond_to do |format|
+      format.js { render :layout => false }
     end
   end
 

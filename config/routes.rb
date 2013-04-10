@@ -7,7 +7,9 @@ Laboratorios::Application.routes.draw do
   
   resources :devoluciones
 
-  match 'prestar/:id' => 'prestamos#prestar'
+  match 'agregar_carrito/:id' => 'prestamos#agregar_carrito'
+  match 'prestar' => 'prestamos#prestar'
+  match 'devolver_carrito/:id' => 'prestamos#devolver_carrito'
   match 'devolucion' => 'devoluciones#devolucion'
   match 'estado_devolucion/:id' => 'devoluciones#estado_devolucion'
   match 'devolver/:id' => 'devoluciones#devolver'

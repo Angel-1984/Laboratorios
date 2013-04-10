@@ -1,0 +1,6 @@
+var material_id = <%= @material_cart.id %>
+$('#material_carrito_' + material_id).remove()
+$('#agregar_link_' + material_id).replaceWith("<%= raw escape_javascript(link_to "Prestar", "/agregar_carrito/#{@material_cart.id}", :remote => true, :id => "agregar_link_#{@material_cart.id}") %>")
+$('#material_' + material_id).remove()
+if ($('#cart div').length == 0)
+  $('#prestar_button').prop('hidden', true)

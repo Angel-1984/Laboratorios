@@ -33,7 +33,7 @@
     <td><%= material.nuevo %></td>
     <td><%= material.usado %></td>
     <td><%= material.danado %></td>
-    <td><%= link_to "Prestar", "/prestar/#{material.id}" if material.disponible %></td>
+    <td><%= link_to "Prestar", "/agregar_carrito/#{material.id}", :remote => true, :id => "agregar_link_#{material.id}" if material.disponible %></td>
   </tr>
 <% end %>
 </tbody>
@@ -41,4 +41,11 @@
 
 <br />
 
+<%= form_tag '/prestar' do %>
+  <div id="cart">
+  </div>
+  <br />
+  <%= submit_tag "Prestar", :id => 'prestar_button', :hidden => true %>
 <% end %>
+<% end %>
+

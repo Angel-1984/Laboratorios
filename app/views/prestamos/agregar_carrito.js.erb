@@ -1,0 +1,5 @@
+var material_id = <%= @material_cart.id %>
+$('#cart').append("<div id='material_carrito_<%= @material_cart.id %>'><%= raw escape_javascript(@material_cart.nombre) %> <%= raw escape_javascript(link_to 'Devolver', "/devolver_carrito/#{@material_cart.id}", :remote => true) %></div>")
+$('#agregar_link_' + material_id).replaceWith("<span id='agregar_link_<%= @material_cart.id %>'>En Carrito</span>")
+$('#prestar_button').removeAttr('hidden')
+$('#cart').append("<%= raw escape_javascript(hidden_field_tag "material_#{@material_cart.id}", @material_cart.id) %>")
