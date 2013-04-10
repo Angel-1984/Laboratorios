@@ -60,4 +60,5 @@ ActiveRecord::Schema.define(:version => 20130403164539) do
     t.datetime "updated_at",                        :null => false
     t.boolean  "devuelto",       :default => false
   end
+
 end

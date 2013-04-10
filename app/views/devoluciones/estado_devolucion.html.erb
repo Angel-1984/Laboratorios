@@ -43,7 +43,8 @@
     </div>
     <div class="field">
       <%= f.label :dano %><br />
-      <%= f.text_area :dano, :rows => 5, :value => @prestamo.dano %>
+      <%= f.text_area :dano, :rows => 5, :value => @prestamo.dano, :disabled => !@prestamo.danado %>
+      
     </div>
     <div class="field">
       <%= f.label :observaciones %><br />

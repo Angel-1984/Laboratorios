@@ -69,6 +69,18 @@ class MaterialesController < ApplicationController
 
     respond_to do |format|
       if @material.update_attributes(params[:material])
+        @material.update_attribute(:dano, "")
+        @material.update_attribute(:nuevo, false)
+        @material.update_attribute(:usado, false)
+        @material.update_attribute(:danado, false)
+        if params[:estado] == "nuevo"
+            @material.update_attribute(:nuevo, true)
+         elsif params[:estado] == "usado"
+            @material.update_attribute(:usado, true)
+         else
+            @material.update_attribute(:danado, true)
+            @material.update_attribute(:dano, params[:material][:dano])
+        end
         format.html { redirect_to @material, notice: 'Material was successfully updated.' }
         format.json { head :no_content }
       else
