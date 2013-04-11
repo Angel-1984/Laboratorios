@@ -20,9 +20,15 @@
         </ul>
       </div>
     <% end %>
-
-    <h3>Material: <%= @material.nombre %></h3>
-    <%= f.hidden_field :material_id, :value => @material.id %>
+    <% for material_id in @materiales %>
+      <% material = Material.find_by_id(material_id) %>
+      <h4>Material: <%= material.nombre %></h4>
+      Estado: <%= revisar_estado(material) %><br />
+      <% if revisar_estado(material) == "Danado" %>
+        Daño: <%= material.dano %><br />
+      <% end %>
+    <% end %><br />
+    <%= hidden_field_tag :materiales_ids, @materiales %>
     <div class="field">
       <%= f.label :num_control %><br />
       <%= f.text_field :num_control %>
@@ -32,14 +38,11 @@
       <%= f.text_area :observaciones, :rows => 5 %>
     </div>
     <%= f.hidden_field :fecha_prestamo, :value => DateTime.now %>
-    Estado: <%= revisar_estado(@material) %><br />
-    <% if @estado == "Danado" %>
-      Daño: <%= @material.dano %><br />
-    <% end %>
-    <%= f.hidden_field :nuevo, :value => @material.nuevo %>
-    <%= f.hidden_field :usado, :value => @material.usado %>
-    <%= f.hidden_field :danado, :value => @material.danado %>
-    <%= f.hidden_field :dano, :value => @material.dano %>
+    
+    <%#= f.hidden_field :nuevo, :value => @material.nuevo %>
+    <%#= f.hidden_field :usado, :value => @material.usado %>
+    <%#= f.hidden_field :danado, :value => @material.danado %>
+    <%#= f.hidden_field :dano, :value => @material.dano %>
     <br />
     <div class="field">
       <%= f.label :laboratorio_id %><br />

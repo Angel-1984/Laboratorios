@@ -4,7 +4,13 @@ class PrestamosController < ApplicationController
   end
 
   def prestar
-    
+    @prestamo = Prestamo.new
+    @materiales = []
+    params.each{ |key,value|
+      if key[0,8] == "material"
+        @materiales << value.to_i
+      end
+    }
   end
 
   def agregar_carrito
@@ -28,14 +34,27 @@ class PrestamosController < ApplicationController
   end
 
   def create
-    @prestamo = Prestamo.new(params[:prestamo])
-    material = Material.find_by_id(@prestamo.material_id)
-    material.update_attribute(:disponible, false)
+    error = false
+    for material_id in params[:materiales_ids].split(" ")
+      material = Material.find_by_id(material_id)
+      prestamo = Prestamo.new(params[:prestamo])
+      prestamo.nuevo = material.nuevo
+      prestamo.usado = material.usado
+      prestamo.danado = material.danado
+      prestamo.dano = material.dano
+      prestamo.material_id = material_id
+      if !prestamo.save
+        error = true
+        @prestamo = Prestamo.new(params[:prestamo])
+        break
+      end
+      material.update_attribute(:disponible, false)
+    end
     respond_to do |format|
-      if @prestamo.save
+      if !error
         format.html { redirect_to prestamos_url, notice: 'El prestamo se realizo con exito.' }
       else
-        format.html { render action: "/prestar#{@prestamo.material_id}" }
+        format.html { render action: "/prestar/#{@prestamo.material_id}" }
       end
     end
   end
