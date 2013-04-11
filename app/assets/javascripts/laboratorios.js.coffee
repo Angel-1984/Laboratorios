@@ -9,3 +9,5 @@ jQuery ->
     bserverSide:true,
     sAjaxSource: $('#tabla_laboratorios').data('source')
   )
+  
+  $("#laboratorio_nombre").focus()

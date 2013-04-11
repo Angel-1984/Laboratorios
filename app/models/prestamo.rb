@@ -4,4 +4,7 @@ class Prestamo < ActiveRecord::Base
   belongs_to :material
   belongs_to :laboratorio
   has_many :devoluciones
+  
+  validates_numericality_of :num_control, :message => " no puede llevar letras o simbolos."
+  
 end

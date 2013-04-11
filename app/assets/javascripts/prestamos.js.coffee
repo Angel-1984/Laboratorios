@@ -9,3 +9,5 @@ jQuery ->
     bserverSide:true,
     sAjaxSource: $('#tabla_materiales_prestamo').data('source')
   )
+  $("#prestamo_num_control").focus()
+  

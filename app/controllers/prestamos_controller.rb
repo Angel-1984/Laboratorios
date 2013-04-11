@@ -35,7 +35,8 @@ class PrestamosController < ApplicationController
 
   def create
     error = false
-    for material_id in params[:materiales_ids].split(" ")
+    @materiales = params[:materiales_ids].split(" ")
+    for material_id in @materiales
       material = Material.find_by_id(material_id)
       prestamo = Prestamo.new(params[:prestamo])
       prestamo.nuevo = material.nuevo
@@ -45,7 +46,7 @@ class PrestamosController < ApplicationController
       prestamo.material_id = material_id
       if !prestamo.save
         error = true
-        @prestamo = Prestamo.new(params[:prestamo])
+        @prestamo = prestamo
         break
       end
       material.update_attribute(:disponible, false)
@@ -54,7 +55,7 @@ class PrestamosController < ApplicationController
       if !error
         format.html { redirect_to prestamos_url, notice: 'El prestamo se realizo con exito.' }
       else
-        format.html { render action: "/prestar/#{@prestamo.material_id}" }
+        format.html { render action: "/prestar" }
       end
     end
   end

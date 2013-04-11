@@ -9,3 +9,12 @@ jQuery ->
     bserverSide:true,
     sAjaxSource: $('#tabla_materiales').data('source')
   )
+  $('#material_nombre').focus()
+  $('#estado_usado').on 'click', ->
+    $('#material_dano').attr('disabled', true)
+  $('#estado_nuevo').on 'click', ->
+    $('#material_dano').attr('disabled', true)
+  $('#estado_danado').on 'click', ->
+    $('#material_dano').attr('disabled', false)
+    $('#material_dano').focus()
+
