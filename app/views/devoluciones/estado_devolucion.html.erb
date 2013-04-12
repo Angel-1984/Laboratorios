@@ -8,51 +8,59 @@
 
   <h1>Devolver</h1>
 
-  <%= form_for(@devolucion) do |f| %>
-    <% if @devolucion.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@devolucion.errors.count, "error") %> prohibited this devolucion from being saved:</h2>
+  <%= form_for(@devolucion) do %>
+    <% for prestamo_id in @prestamos %>
 
-        <ul>
-        <% @devolucion.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+      <% prestamo = Prestamo.find_by_id(prestamo_id) %>
+
+      <% if @devolucion.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@devolucion.errors.count, "error") %> prohibited this devolucion from being saved:</h2>
+
+          <ul>
+          <% @devolucion.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="material_devolucion">
+        <h3>Material: <%= prestamo.material.nombre %></h3>
+        Observaciones: <%= prestamo.observaciones %><br />
+        Estado de Prestamo: <%= estado = revisar_estado(prestamo) %><br />
+        <% if estado == "Danado" %>
+          Daño: <%= prestamo.dano %><br />
         <% end %>
-        </ul>
+      </div>
+      <h3>Estado Devolución:</h3>
+      <div class="field devolucion">
+        <%= label_tag :nuevo %><br />
+        <%= radio_button_tag "estado_#{prestamo_id}", :nuevo, prestamo.nuevo %>
+      </div>
+      <div class="field devolucion">
+        <%= label_tag :usado %><br />
+        <%= radio_button_tag "estado_#{prestamo_id}", :usado, prestamo.usado %>
+      </div>
+      <div class="field devolucion">
+        <%= label_tag :danado %><br />
+        <%= radio_button_tag "estado_#{prestamo_id}", :danado, prestamo.danado %>
+      </div>
+      <div class="field devolucion">
+        <%= label_tag :dano %><br />
+        <%= text_area_tag "dano_#{prestamo_id}", prestamo.dano, :rows => 3, :disabled => !prestamo.danado %>
+
+      </div>
+      <div class="field devolucion">
+        <%= label_tag :observaciones %><br />
+        <%= text_area_tag "observaciones_#{prestamo_id}", '',:rows => 3 %>
       </div>
     <% end %>
+    <br />
+    <%= hidden_field_tag :prestamos_ids, @prestamos %>
+    <div class="actions submit_devolucion">
+      <%= submit_tag "Devolver" %>
+    </div>
 
-    <h3>Material: <%= @prestamo.material.nombre %></h3>
-    Observaciones: <%= @prestamo.observaciones %><br />
-    <%= hidden_field_tag :prestamo_id, @prestamo.id %>
-    Estado de Prestamo: <%= estado = revisar_estado(@prestamo) %><br />
-    <% if estado == "Danado" %>
-      Daño: <%= @prestamo.dano %><br />
-    <% end %>
-    <h3>Estado Devolución:</h3>
-    <div class="field">
-      <%= f.label :nuevo %><br />
-      <%= radio_button_tag :estado, :nuevo, @prestamo.nuevo %>
-    </div>
-    <div class="field">
-      <%= f.label :usado %><br />
-      <%= radio_button_tag :estado, :usado, @prestamo.usado %>
-    </div>
-    <div class="field">
-      <%= f.label :danado %><br />
-      <%= radio_button_tag :estado, :danado, @prestamo.danado %>
-    </div>
-    <div class="field">
-      <%= f.label :dano %><br />
-      <%= f.text_area :dano, :rows => 5, :value => @prestamo.dano, :disabled => !@prestamo.danado %>
-      
-    </div>
-    <div class="field">
-      <%= f.label :observaciones %><br />
-      <%= f.text_area :observaciones, :rows => 5 %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
   <% end %>
 
 <% end %>

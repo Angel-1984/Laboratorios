@@ -67,6 +67,16 @@ body {
 	padding: 5px;
 	border: 0px solid red;
 }
+div.devolucion {
+   float:left;
+   margin-right: 20px;
+}
+div.submit_devolucion {
+    clear: both;
+}
+div.material_devolucion {
+    clear: both;
+}
 #navigation {
 	float:right;
 	border: 1px solid orange;

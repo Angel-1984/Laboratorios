@@ -11,7 +11,7 @@ Laboratorios::Application.routes.draw do
   match 'prestar' => 'prestamos#prestar'
   match 'devolver_carrito/:id' => 'prestamos#devolver_carrito'
   match 'devolucion' => 'devoluciones#devolucion'
-  match 'estado_devolucion/:id' => 'devoluciones#estado_devolucion'
+  match 'estado_devolucion' => 'devoluciones#estado_devolucion'
   match 'devolver/:id' => 'devoluciones#devolver'
 
   match 'historial_material/:id' => 'materiales#historial_material'

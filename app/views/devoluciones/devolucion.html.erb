@@ -7,28 +7,31 @@
 <% content_for :main_content do %>
 
 <% unless @prestamos.empty?  %>
-<table id="prestamos_usuario" class="display">
-  <thead>
-    <tr>
-      <th>Material</th>
-      <th>Observaciones</th>
-      <th>Fecha de prestamo</th>
-      <th>Estado</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for prestamo in @prestamos  %>
-    <tr>
-      <td><%= prestamo.material.nombre %></td>
-      <td><%= prestamo.observaciones %></td>
-      <td><%= prestamo.fecha_prestamo  %></td>
-      <td><%= revisar_estado(prestamo) %></td>
-      <td><%= link_to "Devolver", "/estado_devolucion/#{prestamo.id}" %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_tag('/estado_devolucion') do %>
+  <table id="prestamos_usuario" class="display">
+    <thead>
+      <tr>
+        <th>Sel</th>
+        <th>Material</th>
+        <th>Observaciones</th>
+        <th>Fecha de prestamo</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for prestamo in @prestamos  %>
+      <tr>
+        <td><%= check_box_tag("prestamo_id_#{prestamo.id}", prestamo.id, false) %></td>
+        <td><%= prestamo.material.nombre %></td>
+        <td><%= prestamo.observaciones %></td>
+        <td><%= prestamo.fecha_prestamo  %></td>
+        <td><%= revisar_estado(prestamo) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table><br />
+  Selección: <%= submit_tag "Devolver", :disabled => true, :id => 'devolver_button' %>
+<% end %>
 <% else %>
   Este usuario no tiene prestamos.
 <% end %>

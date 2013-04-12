@@ -9,37 +9,56 @@ class DevolucionesController < ApplicationController
   end
 
   def estado_devolucion
-    @prestamo = Prestamo.find_by_id(params[:id])
+    @prestamos = []
+    params.each{ |key,value|
+      if key[0,8] == "prestamo"
+        @prestamos << value.to_i
+      end
+    }
     @devolucion = Devolucion.new
   end
 
   def create
-    @devolucion = Devolucion.new(params[:devolucion])
-    @devolucion.fecha_entrega = DateTime.now
-    @devolucion.dano = ""
-    @devolucion.prestamo_id = params[:prestamo_id]
-    if params[:estado] == "nuevo"
-      @devolucion.nuevo = true
-    elsif params[:estado] == "usado"
-      @devolucion.usado = true
-    else
-      @devolucion.danado = true
-      @devolucion.dano = params[:devolucion][:dano]
+    error = false
+    @prestamos = params[:prestamos_ids].split(" ")
+    for prestamo_id in @prestamos
+      prestamo = Prestamo.find_by_id(prestamo_id)
+      devolucion = Devolucion.new
+      devolucion.prestamo_id = prestamo_id
+      devolucion.fecha_entrega = DateTime.now
+      devolucion.nuevo = false
+      devolucion.usado = false
+      devolucion.danado = false
+      devolucion.dano = ""
+      if params["estado_#{prestamo_id}"] == "nuevo"
+        devolucion.nuevo = true
+      elsif params["estado_#{prestamo_id}"] == "usado"
+        devolucion.usado = true
+      else
+        devolucion.danado = true
+        devolucion.dano = params["dano_#{prestamo_id}"]
+      end
+      devolucion.observaciones = params["observaciones_#{prestamo_id}"]
+      if !devolucion.save
+        error = true
+        @devolucion = devolucion
+        break
+      end
+      material = prestamo.material
+      material.nuevo = devolucion.nuevo
+      material.usado = devolucion.usado
+      material.danado = devolucion.danado
+      material.dano = devolucion.dano
+      material.disponible = true
+      material.save
+      prestamo.update_attribute(:devuelto, true)
     end
-    prestamo = Prestamo.find_by_id(params[:prestamo_id])
-    material = prestamo.material
-    material.nuevo = @devolucion.nuevo
-    material.usado = @devolucion.usado
-    material.danado = @devolucion.danado
-    material.dano = @devolucion.dano
-    material.disponible = true
-    material.save
-    prestamo.update_attribute(:devuelto, true)
+    
     respond_to do |format|
-      if @devolucion.save
+      if !error
         format.html { redirect_to devoluciones_url, notice: 'La Devolucion se realizo con exito.' }
       else
-        format.html { render action: "/estado_devolucion#{prestamo.id}" }
+        format.html { render action: "/estado_devolucion" }
       end
     end
   end
