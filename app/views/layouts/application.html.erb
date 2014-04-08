@@ -8,35 +8,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="page">
-  	<div id="head">
-  	  <div id="logo">
-  	  	<%= link_to "Pagina Principal", root_path %>
-  	  </div>
-  	  <div id="user">
-  	  	user
-  	  </div>	
-  	</div>
-  	<div id="content">
-  	  <div id="breadcrumb">
-  	  	breadcrumb
-  	  	<%= yield :breadcrumb %>
-  	  </div>
-  	  <div id="main_content">
+  <div id="web">
+      <div id="top_decoration"
+      </div>
+      <div id="page">
+        <div id="head">
+          <div id="logo">
+            <%= link_to "Laboratorios Tec.", root_path %>
+          </div>
+          <div id="user">
+          </div>
+        </div>
+        <div id="content">
+          <div id="main_menu">
+            <span class="menu_actions"><%= link_to "Usuarios", '#' %></span>
+            <span class="menu_actions"><%= link_to "Materiales", materiales_path %></span>
+            <span class="menu_actions"><%= link_to "Laboratorios", laboratorios_path %></span>
+            <span class="menu_actions"><%= link_to "Prestamos", prestamos_path %></span>
+            <span class="menu_actions"><%= link_to "Devoluciones", devoluciones_path %>  </span>
+            <span class="menu_actions"><%= link_to "Reportes", '#' %></span>
+          </div>
+          <div id="breadcrumb">
+                <%= yield :breadcrumb %>
+          </div>
+          <div id="main_content">
             <% flash.each do |name,msg| %>
               <p id="<%= name %>"><%= msg %></p>
             <% end %>
-  	    <%= yield :main_content %>
-  	  </div>
-  	  <div id="navigation">
-  	  	navigation
-  	  	<%= yield :navigation %>
-  	  </div>
-  	</div>
-	  <div id="footer">
-	    footer
-	  </div>
+            <%= yield :main_content %>
+          </div>
+          <div id="navigation">
+                <%= yield :navigation %>
+          </div>
+        </div>
+          <div id="footer">
+          </div>
+      </div>
+      <div id="bottom_decoration"
+      </div>
   </div>
-
 </body>
 </html>
