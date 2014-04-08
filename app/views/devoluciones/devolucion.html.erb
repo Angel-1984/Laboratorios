@@ -33,7 +33,13 @@
   Selección: <%= submit_tag "Devolver", :disabled => true, :id => 'devolver_button' %>
 <% end %>
 <% else %>
-  Este usuario no tiene prestamos.
+  <%= form_tag("/devolucion") do  %>
+    Numero de control: <%= text_field_tag "num_control"  %>
+     <%= submit_tag("Buscar") %>
+
+  <% end %>
+  <br /> 
+  usuario no tiene prestamos.
 <% end %>
 
 <% end %>
