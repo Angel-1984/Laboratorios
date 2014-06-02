@@ -7,14 +7,15 @@ Laboratorios::Application.routes.draw do
   
   resources :devoluciones
 
-  match 'agregar_carrito/:id' => 'prestamos#agregar_carrito'
-  match 'prestar' => 'prestamos#prestar'
-  match 'devolver_carrito/:id' => 'prestamos#devolver_carrito'
-  match 'devolucion' => 'devoluciones#devolucion'
-  match 'estado_devolucion' => 'devoluciones#estado_devolucion'
-  match 'devolver/:id' => 'devoluciones#devolver'
+  get 'agregar_carrito/:id' => 'prestamos#agregar_carrito'
+  get 'prestar' => 'prestamos#prestar'
+  get 'devolver_carrito/:id' => 'prestamos#devolver_carrito'
+  get 'devolucion' => 'devoluciones#devolucion'
+  get 'estado_devolucion' => 'devoluciones#estado_devolucion'
+  get 'devolver/:id' => 'devoluciones#devolver'
 
-  match 'historial_material/:id' => 'materiales#historial_material'
+  get 'historial_material/:id' => 'materiales#historial_material'
+
   #resources :main, :only => [:index]
 
   # The priority is based upon order of creation:

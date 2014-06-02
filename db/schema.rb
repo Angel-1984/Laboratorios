@@ -9,56 +9,56 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403164539) do
+ActiveRecord::Schema.define(version: 20130403164539) do
 
-  create_table "devoluciones", :force => true do |t|
+  create_table "devoluciones", force: true do |t|
     t.integer  "prestamo_id"
     t.datetime "fecha_entrega"
-    t.boolean  "nuevo",         :default => false
-    t.boolean  "usado",         :default => false
-    t.boolean  "danado",        :default => false
+    t.boolean  "nuevo",         default: false
+    t.boolean  "usado",         default: false
+    t.boolean  "danado",        default: false
     t.string   "dano"
     t.string   "observaciones"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "laboratorios", :force => true do |t|
+  create_table "laboratorios", force: true do |t|
     t.string   "nombre"
     t.string   "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "materiales", :force => true do |t|
+  create_table "materiales", force: true do |t|
     t.string   "nombre"
     t.boolean  "disponible"
     t.text     "descripcion"
     t.string   "codigo"
     t.integer  "laboratorio_id"
-    t.boolean  "nuevo",          :default => false
-    t.boolean  "usado",          :default => false
-    t.boolean  "danado",         :default => false
+    t.boolean  "nuevo",          default: false
+    t.boolean  "usado",          default: false
+    t.boolean  "danado",         default: false
     t.text     "dano"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "prestamos", :force => true do |t|
+  create_table "prestamos", force: true do |t|
     t.integer  "material_id"
     t.string   "num_control"
     t.string   "observaciones"
     t.datetime "fecha_prestamo"
-    t.boolean  "nuevo",          :default => false
-    t.boolean  "usado",          :default => false
-    t.boolean  "danado",         :default => false
+    t.boolean  "nuevo",          default: false
+    t.boolean  "usado",          default: false
+    t.boolean  "danado",         default: false
     t.string   "dano"
     t.integer  "laboratorio_id"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.boolean  "devuelto",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "devuelto",       default: false
   end
 
 end
